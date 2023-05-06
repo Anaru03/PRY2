@@ -1,7 +1,7 @@
 CREATE (Rincon_del_Steak:Restaurante {nombre: 'Rincón del Steak', ubicacion: '5ta ave. 10-30 zona 9', precio: '117 GTQ - 311 GTQ', tipo_comida: ['Comida de mar', 'Comida internacional'], ambiente: ['Familiar', 'Romantico', 'Negocios'], tipo_servicio: ['Domicilio', 'A la mesa', 'Para llevar', 'Bar'], horario: ['Lunes - Sábado: 12:00 pm - 22:00 pm', 'Domingo: 11:00 am - 21:00 pm'],web:'https://rincondelsteak.com.gt/menus-2'})
 CREATE (Cadejo_Brewing_Company_Beerhouse_and_Grill:Restaurante {nombre: 'Cadejo Brewing Company Beerhouse & Grill', ubicacion: '13 Calle 4, Cdad. de Guatemala', precio: '45 GTQ - 130 GTQ', tipo_comida: ['Vegano','Vegetariano','Bar','Comida de mar'], ambiente: ['Familiar','Aire libre','Entretenimiento'], tipo_servicio:['A la mesa','Domicilio','Para llevar'], horario: ['Lunes: 11:30 am - 23:59 pm','Martes - Viernes: 12:00 pm - 23:00 pm','Sábado: 12:00 pm - 1:00 am','Domingo: 12:00 pm - 22:00 pm'],web:'https://www.facebook.com/cervezacadejogt/'})
 CREATE (En_Un_Dos_Por_Crepes:Restaurante {nombre: 'En Un Dos Por Crepes', ubicacion: 'Ciudad de Guatemala, 8A Calle 3-56, zona 10', precio: '14 GTQ - 29 GTQ', tipo_comida: 'Comida internacional', ambiente: ['Aire libre','Familiar'], tipo_servicio:['Para llevar','A la mesa','Domicilio'], horario: 'Lunes - Viernes: 10:30 am - 20:00 pm',web:'https://www.facebook.com/enundosporcrepes/?locale=es_LA'})
-CREATE (_100_montaditos:Restaurante {nombre: '100 montaditos', ubicacion: ['Bulevar El Naranjo, Cdad. de Guatemala','7 Ave. 6-40 Zona 11 C.C. Majadas Once'], precio: '15 GTQ - 75 GTQ', tipo_comida: ['Comida internacional','Vegetariana'], ambiente: 'Familiar', tipo_servicio:['A la mesa','Para llevar','Bar'], horario: 'Lunes - Domingo: 10:00 am - 23:00 pm',web:'https://spain.100montaditos.com/es/'})
+CREATE (_100_montaditos:Restaurante {nombre: '100 montaditos', ubicacion: ['Bulevar El Naranjo, Cdad. de Guatemala','7 Ave. 6-40 Zona 11 C.C. Majadas Once'], precio: '15 GTQ - 75 GTQ', tipo_comida: ['Comida internacional','Vegetariano'], ambiente: 'Familiar', tipo_servicio:['A la mesa','Para llevar','Bar'], horario: 'Lunes - Domingo: 10:00 am - 23:00 pm',web:'https://spain.100montaditos.com/es/'})
 CREATE (Baoz:Restaurante {nombre: 'Baoz', ubicacion: ['Plaza centro comercial Zona 4 ( carrion ) 3er nivel 6a Avenida Pista Izquierda, 0-79, Zona 4, Guatemala, Guatemala','Plaza Madero Atanasio zona 12 Diagonal 3 calzada atanasio tzul 17-13 zona 12 plaza madero atanasio local 14 '], precio: '20 GTQ - 47 GTQ', tipo_comida: 'Comida internacional', ambiente: 'Familiar', tipo_servicio:['A la mesa','Para llevar'], horario: ['Lunes: 12:30 pm - 18:00 pm','Martes - Domingo: 12:30 pm - 19:00 pm'],web:'https://www.facebook.com/baozgt/'})
 CREATE (Restaurante_El_Cafetal:Restaurante {nombre: 'Restaurante El Cafetal', ubicacion: 'Avenida la Reforma y 14 Calle, Ciudad de Guatemala 01010 Guatemala', precio: '117 GTQ - 234 GTQ', tipo_comida: ['Comida internacional', 'Vegano', 'Vegetariano', 'Gourmet', 'Infantil'], ambiente: ['Familiar', 'Negocios', 'Romántico'], tipo_servicio: ['Para llevar', 'A la mesa', 'Bufet'], horario: 'Lunes - Domingo: 7:30 am - 23:00 pm', web: 'https://www.marriott.com/hotels/einterface/GUAWI'})
 CREATE (Carpaccio_Restaurante:Restaurante {nombre: 'Carpaccio Restaurante', ubicacion: '14 calle 0-25 zona 10 Frente al Westin Camino Real Guatemala, 01010', precio: '195 GTQ - 779 GTQ', tipo_comida: ['Comida internacional', 'Comida de mar', 'Bar', 'Gourmet', 'Vegetariano'], ambiente: ['Familiar', 'Romántico', 'Aire libre', 'Negocios'], tipo_servicio: 'A la mesa', horario: ['Lunes - Sabado: 11:00 am - 22:30 pm','Domingo: Cerrado'], web: 'https://carpacciorestaurante.com/'})
@@ -36,18 +36,18 @@ CREATE (zona_14:zona {zona:'zona 14'})
 CREATE (zona_8:zona {zona:'zona 8'})
 CREATE (zona_16:zona {zona:'zona 16'})
 
-CREATE (precio_alto:precio {precio:'Alto'})
+CREATE (precio_gama_alta:precio {precio:'Gama alta'})
 CREATE (precio_promedio:precio {precio:'Promedio'})
 CREATE (precio_economico:precio {precio:'Económico'})
-CREATE (precio_gama_alta:precio {precio:'Gama alta'})
+CREATE (precio_personalizado:precio {precio:'Personalizado'})
 
 CREATE(Guatemalteca:Tipo_comida{tipo_comida:"Guatemalteca"})
-CREATE(Comida internacional:Tipo_comida{tipo_comida:"Comida internacional"})
-CREATE(Comida rapida:Tipo_comida{tipo_comida:"Comida rapida"})
+CREATE(Comida_internacional:Tipo_comida{tipo_comida:"Comida internacional"})
+CREATE(Comida_rapida:Tipo_comida{tipo_comida:"Comida rapida"})
 CREATE(Vegetariano:Tipo_comida{tipo_comida:"Vegetariano"})
 CREATE(Vegano:Tipo_comida{tipo_comida:"Vegano"})
 CREATE(Saludable:Tipo_comida{tipo_comida:"Saludable"})
-CREATE(Comida de mar:Tipo_comida{tipo_comida:"Comida de mar"})
+CREATE(Comida_de_mar:Tipo_comida{tipo_comida:"Comida de mar"})
 CREATE(Infantil:Tipo_comida{tipo_comida:"Infantil"})
 CREATE(Bar:Tipo_comida{tipo_comida:"Bar"})
 CREATE(Gourmet:Tipo_comida{tipo_comida:"Gourmet"})
@@ -74,11 +74,17 @@ CREATE (_24_horas:Horario {Horario: '24 horas'})
 CREATE (Fines_de_semana:Horario {Horario: 'Fines de Semana'})
 
 
-
 WITH Rincon_del_Steak, zona_9
 MATCH (restaurante:Restaurante {nombre: 'Rincón del Steak'})
 MATCH (zona:zona {zona: '9'})
 CREATE (restaurante)-[:ubicacion]->(zona)
 
+WITH Rincon_del_Steak, Cadejo_Brewing_Company_Beerhouse_and_Grill, En_Un_Dos_Por_Crepes, _100_montaditos, Baoz, Carpaccio_Restaurante, Pronto_Pizza, Pizza_Vesuvio, Dennys, Quintana_Bistrot, Gracia_Cocina_de_Autor, Applebees, El_Portalito, Los_Cebollines, Sushi_Itto, Hacienda_Real, Casa_Chapina, Los_Tres_Tiempos, Los_Ranchos, Jakes, Pollo_Campero, Kacao, Altuna
+WITH zona_9, zona_10, zona_7, zona_4, zona_11, zona_12, zona_15, zona_17, zona_1, zona_14, zona_8, zona_16
+WITH precio_gama_alta, precio_promedio, precio_economico, precio_personalizado
+WITH Guatemalteca, Comida_internacional, Comida_rapida, Vegetariano, Vegano, Saludable, Comida_de_mar, Infantil, Bar, Gourmet
+WITH Romantico, Familiar, Negocios, Vistas, Entretenimiento, Aire_libre
+WITH para_llevar, domicilio, bufet, a_la_mesa, bar
+WITH Desayuno, Almuerzo, Cena, Brunch, Happy_hour, _24_horas, Fines_de_semana
 
 //CREATE (:Restaurante {nombre: '', ubicacion: '', precio: '', tipo_comida: '', ambiente: '', tipo_servicio:'', horario: '',web:''})
