@@ -23,18 +23,18 @@ CREATE (Pollo_Campero:Restaurante {nombre: 'Pollo Campero', ubicacion: ['Centro 
 CREATE (Kacao:Restaurante {nombre: 'Kacao', ubicacion: '2a Avenida 13-44 Zona 10, Guatemala City, Guatemala', precio: '62 GTQ - 350 GTQ', tipo_comida: ['Comida internacional', 'Guatemalteca'], ambiente: ['Aire libre', 'Familiar', 'Vistas', 'Entretenimiento'], tipo_servicio: ['Bar', 'A la mesa', 'Para llevar', 'Domicilio'], horario: ['Lunes: 12:00 pm - 22:30 pm', 'Martes - Sabado: 12:00 pm - 23:00 pm', 'Domingo: 12:00 pm - 22:00 pm'], web: 'https://www.facebook.com/Kacao.Maya/?locale=es_LA'})
 CREATE (Altuna:Restaurante {nombre: 'Altuna', ubicacion: 'C5A Avenida 12-31, Cdad. de Guatemala 01001 Blvr. Rafael Landivar 10-05, Cdad. de Guatemala', precio: '41 GTQ - 225 GTQ', tipo_comida: ['Comida internacional', 'Comida del mar'], ambiente: ['Aire libre', 'Vistas', 'Negocios', 'Familiar', 'Romantico'], tipo_servicio: ['Bar', 'A la mesa', 'Para llevar', 'Domicilio'], horario: ['Lunes: 12:00 pm - 17:00 pm','Martes - Sabado: 12:00 pm 22:30 pm' ,'Domingo: 12:00 pm - 17:00 pm'], web: 'https://www.facebook.com/restaurantealtuna/?locale=es_LA'})
 
-CREATE (zona_9:zona {zona:'zona 9'})
-CREATE (zona_10:zona {zona:'zona 10'})
-CREATE (zona_7:zona {zona:'zona 7'})
-CREATE (zona_4:zona {zona:'zona 4'})
-CREATE (zona_11:zona {zona:'zona 11'})
-CREATE (zona_12:zona {zona:'zona 12'})
-CREATE (zona_15:zona {zona:'zona 15'})
-CREATE (zona_17:zona {zona:'zona 17'})
-CREATE (zona_1:zona {zona:'zona 1'})
-CREATE (zona_14:zona {zona:'zona 14'})
-CREATE (zona_8:zona {zona:'zona 8'})
-CREATE (zona_16:zona {zona:'zona 16'})
+CREATE (zona_9:zona {zona:'9'})
+CREATE (zona_10:zona {zona:'10'})
+CREATE (zona_7:zona {zona:'7'})
+CREATE (zona_4:zona {zona:'4'})
+CREATE (zona_11:zona {zona:'11'})
+CREATE (zona_12:zona {zona:'12'})
+CREATE (zona_15:zona {zona:'15'})
+CREATE (zona_17:zona {zona:'17'})
+CREATE (zona_1:zona {zona:'1'})
+CREATE (zona_14:zona {zona:'14'})
+CREATE (zona_8:zona {zona:'8'})
+CREATE (zona_16:zona {zona:'16'})
 
 CREATE (precio_gama_alta:precio {precio:'Gama alta'})
 CREATE (precio_promedio:precio {precio:'Promedio'})
@@ -74,11 +74,6 @@ CREATE (_24_horas:Horario {Horario: '24 horas'})
 CREATE (Fines_de_semana:Horario {Horario: 'Fines de Semana'})
 
 
-WITH Rincon_del_Steak, zona_9
-MATCH (restaurante:Restaurante {nombre: 'Rincón del Steak'})
-MATCH (zona:zona {zona: '9'})
-CREATE (restaurante)-[:ubicacion]->(zona)
-
 WITH Rincon_del_Steak, Cadejo_Brewing_Company_Beerhouse_and_Grill, En_Un_Dos_Por_Crepes, _100_montaditos, Baoz, Carpaccio_Restaurante, Pronto_Pizza, Pizza_Vesuvio, Dennys, Quintana_Bistrot, Gracia_Cocina_de_Autor, Applebees, El_Portalito, Los_Cebollines, Sushi_Itto, Hacienda_Real, Casa_Chapina, Los_Tres_Tiempos, Los_Ranchos, Jakes, Pollo_Campero, Kacao, Altuna
 WITH zona_9, zona_10, zona_7, zona_4, zona_11, zona_12, zona_15, zona_17, zona_1, zona_14, zona_8, zona_16
 WITH precio_gama_alta, precio_promedio, precio_economico, precio_personalizado
@@ -87,4 +82,30 @@ WITH Romantico, Familiar, Negocios, Vistas, Entretenimiento, Aire_libre
 WITH para_llevar, domicilio, bufet, a_la_mesa, bar
 WITH Desayuno, Almuerzo, Cena, Brunch, Happy_hour, _24_horas, Fines_de_semana
 
-//CREATE (:Restaurante {nombre: '', ubicacion: '', precio: '', tipo_comida: '', ambiente: '', tipo_servicio:'', horario: '',web:''})
+MATCH (Rincon_del_Steak:Restaurante {nombre: 'Rincon_del_Steak'})
+MATCH (Cadejo_Brewing_Company_Beerhouse_and_Grill {nombre: 'Cadejo Brewing Company Beerhouse & Grill'})
+MATCH (En_Un_Dos_Por_Crepes:Restaurante {nombre: 'En Un Dos Por Crepes'})
+MATCH (_100_montaditos:Restaurante {nombre: '100 montaditos'})
+MATCH (Baoz:Restaurante {nombre: 'Baoz'})
+MATCH (Restaurante_El_Cafetal:Restaurante {nombre: 'Restaurante El Cafetal'})
+MATCH (Carpaccio_Restaurante:Restaurante {nombre: 'Carpaccio Restaurante'})
+MATCH (Pronto_Pizza:Restaurante {nombre: 'Pronto Pizza'})
+MATCH (Pizza_Vesuvio:Restaurante {nombre: 'Pizza Vesuvio'})
+MATCH (Dennys:Restaurante {nombre: 'Dennys'})
+MATCH (Quintana_Bistrot:Restaurante {nombre: 'Quintana Bistrot'})
+MATCH (Gracia_Cocina_de_Auto:Restaurante {nombre: 'Gracia Cocina de Autor'})
+MATCH (Applebees:Restaurante {nombre: 'Applebees'})
+MATCH (El_Portalito:Restaurante {nombre: 'El Portalito'})
+MATCH (Los_Cebollines:Restaurante {nombre: 'Los Cebollines'})
+MATCH (Los_Cebollines:Restaurante {nombre: 'Los Cebollines'})
+MATCH (Sushi_Itto:Restaurante {nombre: 'Sushi Itto'})
+MATCH (Hacienda_Real:Restaurante {nombre: 'Hacienda Real'})
+MATCH (Casa_Chapina:Restaurante {nombre: 'Casa Chapina'})
+MATCH (Los_Tres_Tiempos:Restaurante {nombre: 'Los Tres Tiempos'})
+MATCH (Los_Ranchos:Restaurante {nombre: 'Los Ranchos'})
+MATCH (Jakes:Restaurante {nombre: 'Jakes'})
+MATCH (Pollo_Campero:Restaurante {nombre: 'Pollo Campero'})
+MATCH (Kacao:Restaurante {nombre: 'Kacao'})
+MATCH (Altuna:Restaurante {nombre: 'Altuna'})
+
+
