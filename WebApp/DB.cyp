@@ -74,13 +74,17 @@ CREATE (_24_horas:Horario {Horario: '24 horas'})
 CREATE (Fines_de_semana:Horario {Horario: 'Fines de Semana'})
 
 
-WITH Rincon_del_Steak, Cadejo_Brewing_Company_Beerhouse_and_Grill, En_Un_Dos_Por_Crepes, _100_montaditos, Baoz, Carpaccio_Restaurante, Pronto_Pizza, Pizza_Vesuvio, Dennys, Quintana_Bistrot, Gracia_Cocina_de_Autor, Applebees, El_Portalito, Los_Cebollines, Sushi_Itto, Hacienda_Real, Casa_Chapina, Los_Tres_Tiempos, Los_Ranchos, Jakes, Pollo_Campero, Kacao, Altuna
-WITH zona_9, zona_10, zona_7, zona_4, zona_11, zona_12, zona_15, zona_17, zona_1, zona_14, zona_8, zona_16
-WITH precio_gama_alta, precio_promedio, precio_economico, precio_personalizado
-WITH Guatemalteca, Comida_internacional, Comida_rapida, Vegetariano, Vegano, Saludable, Comida_de_mar, Infantil, Bar, Gourmet
-WITH Romantico, Familiar, Negocios, Vistas, Entretenimiento, Aire_libre
-WITH para_llevar, domicilio, bufet, a_la_mesa, bar
-WITH Desayuno, Almuerzo, Cena, Brunch, Happy_hour, _24_horas, Fines_de_semana
+WITH Rincon_del_Steak, Cadejo_Brewing_Company_Beerhouse_and_Grill, 
+En_Un_Dos_Por_Crepes, _100_montaditos, Baoz, Carpaccio_Restaurante, 
+Pronto_Pizza, Pizza_Vesuvio, Dennys, Quintana_Bistrot, Gracia_Cocina_de_Autor, 
+Applebees, El_Portalito, Los_Cebollines, Sushi_Itto, Hacienda_Real, Casa_Chapina, 
+Los_Tres_Tiempos, Los_Ranchos, Jakes, Pollo_Campero, Kacao, Altuna, zona_9, zona_10, 
+zona_7, zona_4, zona_11, zona_12, zona_15, zona_17, zona_1, zona_14, zona_8, zona_16,
+precio_gama_alta, precio_promedio, precio_economico, precio_personalizado
+,Guatemalteca, Comida_internacional, Comida_rapida, Vegetariano, Vegano, Saludable, 
+Comida_de_mar, Infantil, Bar, Gourmet,Romantico, Familiar, Negocios, Vistas, Entretenimiento, Aire_libre
+,para_llevar, domicilio, bufet, a_la_mesa, bar
+,Desayuno, Almuerzo, Cena, Brunch, Happy_hour, _24_horas, Fines_de_semana
 
 MATCH (Rincon_del_Steak:Restaurante {nombre: 'Rincon_del_Steak'})
 MATCH (Cadejo_Brewing_Company_Beerhouse_and_Grill {nombre: 'Cadejo Brewing Company Beerhouse & Grill'})
