@@ -140,13 +140,23 @@ header{
 }
 .card-container{
     margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 960px);
+    max-width: 960px;
+    place-content: center;
 }
 .card{
-    padding-top: 12px;
+    padding: 12px;
+    width: 18rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.845);
 }
 .card-text img{
     width: 8%;
+    float: left;
+    margin-right: 5px;
+}
+.card-text ul{
+    padding-left: 40px;
 }
 .card .btn{
     --bs-btn-color: var(--white);
