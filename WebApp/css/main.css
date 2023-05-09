@@ -141,9 +141,10 @@ header{
 .card-container{
     margin-top: 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 960px);
+    grid-template-columns: repeat(auto-fill, 18rem);
     max-width: 960px;
     place-content: center;
+    gap: 10px;
 }
 .card{
     padding: 12px;
@@ -156,7 +157,8 @@ header{
     margin-right: 5px;
 }
 .card-text ul{
-    padding-left: 40px;
+    padding-left: 23px;
+    list-style-position: inside;
 }
 .card .btn{
     --bs-btn-color: var(--white);
