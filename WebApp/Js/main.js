@@ -1,12 +1,52 @@
 $(document).ready(function(){
-    
+    fillDataSelect();
     
     $("button").click(function(){
         renderCards(productList);
-        
+            
         });
 
 });
+function fillDataSelect(){
+    var ubicaciones = [
+        { value: "1", text: "Zona 1" },
+        { value: "4", text: "Zona 4" },
+        { value: "7", text: "Zona 7" },
+        { value: "8", text: "Zona 8" },
+        { value: "9", text: "Zona 9" },
+        { value: "10", text: "Zona 10" },
+        { value: "11", text: "Zona 11" },
+        { value: "12", text: "Zona 12" },
+        { value: "14", text: "Zona 14" },
+        { value: "16", text: "Zona 16" },
+        { value: "17", text: "Zona 17" }
+      ];
+    
+    var selectUbicacion = $('#op_Ubicacion');
+    
+    $.each(ubicaciones, function(key, ubicacion) {
+        var optionUbicaciones = $('<option></option>')
+          .attr('value', ubicacion.value)
+          .text(ubicacion.text);
+        selectUbicacion.append(optionUbicaciones);
+    });
+
+    var precios =[
+        {value:"Gama alta", text:"Gama alta"},
+        {value:"Promedio", text:"Promedio"},
+        {value:"Economico", text:"Economico"}
+    ];
+
+    var selectPrecios = $("#op_Precio");
+
+    $.each(precios, function(key, precio){
+        var optionPrecios = $('<option></option>')
+        .attr("value", precio.value)
+        .text(precio.text);
+        selectPrecios.append(optionPrecios);
+    });
+}
+
 const productList = [];
     createObjects("Rincón del Steak","5ta ave. 10-30 zona 9",'117 GTQ - 311 GTQ',['Comida de mar', 'Comida internacional'],['Familiar', 'Romantico', 'Negocios'],['Domicilio', 'A la mesa', 'Para llevar', 'Bar'],['Lunes - Sábado: 12:00 pm - 22:00 pm', 'Domingo: 11:00 am - 21:00 pm'],'https://rincondelsteak.com.gt/menus-2','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/4.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/17.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/8.jpg');
     function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servicio,horario,web,img1,img2,img3){
