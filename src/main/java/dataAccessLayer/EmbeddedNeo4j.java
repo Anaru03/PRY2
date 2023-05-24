@@ -60,6 +60,31 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 	
+	public LinkedList<String> getRestaurants(){
+		try(Session session = driver.session()){
+			LinkedList<String> restaurants = session.readTransaction( new TransactionWork<LinkedList<String>>()
+				{
+				@Override
+                public LinkedList<String> execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH (restaurante:Restaurante) RETURN restaurante.nombre");
+                    LinkedList<String> myrestaurants = new LinkedList<String>();
+                    List<Record> registros = result.list();
+                    for (int i = 0; i < registros.size(); i++) {
+                   	 //myactors.add(registros.get(i).toString());
+                   	 myrestaurants.add(registros.get(i).get("restaurante.nombre").asString());
+                    }
+                    
+                    return myrestaurants;
+                	}	
+				
+				});
+			return restaurants;
+		}
+	}
 	
+	public LinkedList<String> getMoviesByLocation(String location){
+		return null;
+	}
 	
 }

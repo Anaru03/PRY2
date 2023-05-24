@@ -192,16 +192,14 @@ function loadAllRestaurants(){
     $.ajax( {
 			
         type: "GET",
-        url: '/PR2/HelloServlet',
+        url: '/HelloServlet',
         success: function(data) {
-            //alert("Result" + data.resultado);
-            /*$.each(data.Restaurantes, function(i,item){
-                createObjects(item,"","","","","","","","","","")
-            });*/
+            alert("Result" + data.resultado);
             
-            console.log(data)
+            
+            console.log()
 
-           
+
         }
     } );
 }
