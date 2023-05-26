@@ -1,10 +1,11 @@
-$(document).ready(function(){
+(function($) {
+    "use strict";
     fillDataSelect();
     
     loadAllRestaurants();
     
 
-});
+
 function fillDataSelect(){
     var ubicaciones = [
         { value: "1", text: "Zona 1" },
@@ -189,17 +190,22 @@ $("button").click(function(){
 
 
 function loadAllRestaurants(){
+    console.log("ADAS")
     $.ajax( {
 			
         type: "GET",
-        url: 'FoodieGT/HelloServlet',
+        url: '/FoodieGT/HelloServlet',
+        dataType: "json",
+
         success: function(data) {
-            alert("Result" + data.resultado);
-            
-            
-            console.log()
-
-
+            console.log("Result" + data.Restaurantes);
+        
+            console.log("aver")
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Ocurrió un error al recibir la respuesta
+            console.log("Error: " + textStatus, errorThrown); // Mostrar información del error
         }
     } );
 }
+})(jQuery);
