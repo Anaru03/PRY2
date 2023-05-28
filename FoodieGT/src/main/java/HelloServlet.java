@@ -40,23 +40,41 @@ public class HelloServlet extends HttpServlet {
 		 	response.setCharacterEncoding("UTF-8");
 		 	JSONObject myResponse = new JSONObject();
 		 	
-		 	JSONArray nombresRestaurantes = new JSONArray();
+		 	JSONObject  restaurantes = new JSONObject ();
 		 	
-		 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://3.88.196.131:7687", "neo4j", "defenses-marble-jars" ) )
+		 	JSONArray arrrest = new JSONArray();
+		 	
+		 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://52.205.254.112:7687", "neo4j", "investigations-signals-wages" ) )
 		        {
 				 	LinkedList<String> myrestaurants = greeter.getRestaurants();
 				 	
 				 	for (int i = 0; i < myrestaurants.size(); i++) {
-				 		nombresRestaurantes.add(myrestaurants.get(i));
+				 		String[] r = myrestaurants.get(i).split(";");
+				 		
+				 		restaurantes.put("Nombre",r[0]);
+				 		restaurantes.put("Ubicacion",r[1]);
+				 		restaurantes.put("Precio",r[2]);
+				 		restaurantes.put("TipoDeComida",r[3]);
+				 		restaurantes.put("Ambiente",r[4]);
+				 		restaurantes.put("TipoDeServicio",r[5]);
+				 		restaurantes.put("Horario",r[6]);
+				 		restaurantes.put("web",r[7]);
+				 		restaurantes.put("img1",r[8]);
+				 		restaurantes.put("img2",r[9]);
+				 		restaurantes.put("img3",r[10]);
+				 		arrrest.add(restaurantes);
+					 	
+				 		
 				 	}
+				 	
 		        	
 		        } catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		 	
-		 	myResponse.put("conteo", nombresRestaurantes.size()); //Guardo la cantidad de actores
-		 	myResponse.put("Restaurantes", nombresRestaurantes);
+		 	myResponse.put("Restaurantes", arrrest);
+		 	myResponse.put("conteo", arrrest.size()); 
+		 	//Guardo la cantidad de actores
 		 	out.println(myResponse);
 		 	out.flush();   
 		 	
