@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import org.json.simple.JSONArray;
 
 
 import dataAccessLayer.EmbeddedNeo4j;
+import dataAccessLayer.Restaurante;
 
 /**
  * Servlet implementation class HelloServlet
@@ -44,26 +46,31 @@ public class HelloServlet extends HttpServlet {
 		 	
 		 	JSONArray arrrest = new JSONArray();
 		 	
+		 	ArrayList<Restaurante> arrRest = new ArrayList();
+		 	
+		 	
 		 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://52.205.254.112:7687", "neo4j", "investigations-signals-wages" ) )
 		        {
-				 	LinkedList<String> myrestaurants = greeter.getRestaurants();
+				 	LinkedList<Restaurante> myrestaurants = greeter.getRestaurants();
 				 	
 				 	for (int i = 0; i < myrestaurants.size(); i++) {
-				 		String[] r = myrestaurants.get(i).split(";");
+				 		JSONObject caracteristicasRestaurantes = new JSONObject();
 				 		
-				 		restaurantes.put("Nombre",r[0]);
-				 		restaurantes.put("Ubicacion",r[1]);
-				 		restaurantes.put("Precio",r[2]);
-				 		restaurantes.put("TipoDeComida",r[3]);
-				 		restaurantes.put("Ambiente",r[4]);
-				 		restaurantes.put("TipoDeServicio",r[5]);
-				 		restaurantes.put("Horario",r[6]);
-				 		restaurantes.put("web",r[7]);
-				 		restaurantes.put("img1",r[8]);
-				 		restaurantes.put("img2",r[9]);
-				 		restaurantes.put("img3",r[10]);
-				 		arrrest.add(restaurantes);
-					 	
+				 		caracteristicasRestaurantes.put("nombre", myrestaurants.get(i).getNombre());
+				 		caracteristicasRestaurantes.put("ubicacion", myrestaurants.get(i).getUbicacion());
+				 		caracteristicasRestaurantes.put("precio", myrestaurants.get(i).getPrecio());
+				 		caracteristicasRestaurantes.put("tipoComida", myrestaurants.get(i).getTipoComida());
+				 		caracteristicasRestaurantes.put("ambiente", myrestaurants.get(i).getAmbiente());
+				 		caracteristicasRestaurantes.put("tipoServicio", myrestaurants.get(i).getTipoServicio());
+				 		caracteristicasRestaurantes.put("horarios", myrestaurants.get(i).getHorarios());
+				 		caracteristicasRestaurantes.put("web", myrestaurants.get(i).getWeb());
+				 		caracteristicasRestaurantes.put("img1", myrestaurants.get(i).getImg1());
+				 		caracteristicasRestaurantes.put("img2", myrestaurants.get(i).getImg2());
+				 		caracteristicasRestaurantes.put("img3", myrestaurants.get(i).getImg3());
+
+
+				 		arrrest.add(caracteristicasRestaurantes);
+				 		
 				 		
 				 	}
 				 	

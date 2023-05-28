@@ -61,15 +61,15 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 	
-	public LinkedList<String> getRestaurants(){
+	public LinkedList<Restaurante> getRestaurants(){
 		try(Session session = driver.session()){
-			LinkedList<String> restaurants = session.readTransaction( new TransactionWork<LinkedList<String>>()
+			LinkedList<Restaurante> restaurants = session.readTransaction( new TransactionWork<LinkedList<Restaurante>>()
 				{
 				@Override
-                public LinkedList<String> execute( Transaction tx )
+                public LinkedList<Restaurante> execute( Transaction tx )
                 {
                     Result result = tx.run( "MATCH (restaurante:Restaurante) RETURN restaurante.nombre , restaurante.ubicacion, restaurante.precio, restaurante.tipo_comida, restaurante.ambiente, restaurante.tipo_servicio,restaurante.horario, restaurante.web, restaurante.img1, restaurante.img2, restaurante.img3");
-                    LinkedList<String> myrestaurants = new LinkedList<String>();
+                    LinkedList<Restaurante> myrestaurants = new LinkedList<Restaurante>();
                     List<Record> registros = result.list();
                     
                     for (int i = 0; i < registros.size(); i++) {
@@ -94,8 +94,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     	String img2 = registros.get(i).get("restaurante.img2").toString();
                     	String img3 = registros.get(i).get("restaurante.img3").toString();
                     	
+                    	
                     	Restaurante rs = new Restaurante(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horario, web, img1, img2, img3);
-                   	 	myrestaurants.add(rs.toString());
+                   	 	myrestaurants.add(rs);
                     }
                     
                     return myrestaurants;

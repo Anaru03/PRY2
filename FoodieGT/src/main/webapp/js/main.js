@@ -1,11 +1,14 @@
-(function($) {
-    "use strict";
+$(document).ready(function(){
+    
+    
     fillDataSelect();
-    
     loadAllRestaurants();
+
+
     
+});
 
-
+const productList = [];
 function fillDataSelect(){
     var ubicaciones = [
         { value: "1", text: "Zona 1" },
@@ -112,9 +115,9 @@ function fillDataSelect(){
 
 }
 
-const productList = [];
 
-createObjects("Rincón del Steak","5ta ave. 10-30 zona 9",'117 GTQ - 311 GTQ',['Comida de mar', 'Comida internacional'],['Familiar', 'Romantico', 'Negocios'],['Domicilio', 'A la mesa', 'Para llevar', 'Bar'],['Lunes - Sábado: 12:00 pm - 22:00 pm', 'Domingo: 11:00 am - 21:00 pm'],'https://rincondelsteak.com.gt/menus-2','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/4.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/17.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/8.jpg');
+
+//createObjects("Rincón del Steak","5ta ave. 10-30 zona 9",'117 GTQ - 311 GTQ',['Comida de mar', 'Comida internacional'],['Familiar', 'Romantico', 'Negocios'],['Domicilio', 'A la mesa', 'Para llevar', 'Bar'],['Lunes - Sábado: 12:00 pm - 22:00 pm', 'Domingo: 11:00 am - 21:00 pm'],'https://rincondelsteak.com.gt/menus-2','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/4.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/17.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/8.jpg');
 
 function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servicio,horario,web,img1,img2,img3){
     productList.push({
@@ -156,25 +159,32 @@ function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servici
             cardPrecio.append(cardPrecioIco, textoPrecio);
 
             var cardTipoComida = $("<p>").addClass("card-text");
+
             var cardTipoComidaIco = $("<img>").attr("src", "./img/IconoTipoDeComida.png").attr("alt", "Tipo comida Icono");
-
-            if (Array.isArray(restaurant.tipo_comida)) {
-                var listTipoComida = $("<ul>");
+            var textipoComida = $("<span>").text(restaurant.tipo_comida);
+            cardTipoComida.append(cardTipoComidaIco, textipoComida);
             
-                for (element of restaurant.tipo_comida) {
-                var liTipoComida = $("<li>").text(element);
-                listTipoComida.append(liTipoComida);
-                }
-                cardTipoComida.append(cardTipoComidaIco, listTipoComida);
-                } else {
-                var textipoComida = $("<span>").text(restaurant.tipo_comida);
-                cardTipoComida.append(textipoComida);
-                console.log("NO es un array");
-            }
+            var cardAmbiente = $("<p>").addClass("card-text");
 
-var mainButton = $("<a>").attr("href", "./Restaurant.html").addClass("btn btn-primary").text("Ver más");
+            var cardAmbienteIco = $("<img>").attr("src", "../img/IconoAmbiente.png").attr("alt", "Ambiente Icono");
+            var textoAmbiente = $("<span>").text(restaurant.ambiente);
+            cardAmbiente.append(cardAmbienteIco,textoAmbiente);
 
-cardBody.append(cardTitle, cardUbicacion, cardPrecio, cardTipoComida, mainButton);
+            var cardTipoServicio = $("<p>").addClass("card-text");
+
+            var cardTipoServicioIco = $("<img>").attr("src", "../img/IconoServicio.png").attr("alt", "Servicio Icono");
+            var textoTipoServicio = $("<span>").text(restaurant.tipo_servicio);
+            cardTipoServicio.append(cardTipoServicioIco,textoTipoServicio);
+
+            var cardHorario = $("<p>").addClass("card-text");
+
+            var cardHorarioIco = $("<img>").attr("src", "../img/IconoHorario.png").attr("alt", "Horario Icono");
+            var textoHorario = $("<span>").text(restaurant.horario);
+            cardHorario.append(cardHorarioIco,textoHorario);
+
+var mainButton = $("<a>").attr("href", restaurant.web).addClass("btn btn-primary").text("Sitio web");
+
+cardBody.append(cardTitle, cardUbicacion, cardPrecio, cardTipoComida, cardAmbiente, cardTipoServicio, cardHorario, mainButton);
 restaurantCard.append(restaurantImg, cardBody);
 $(".card-container").append(restaurantCard);
         }
@@ -185,27 +195,41 @@ $("button").click(function(){
     
 
 
-    renderCards(productList);
+
 });
 
-
 function loadAllRestaurants(){
-    console.log("ADAS")
     $.ajax( {
 			
         type: "GET",
         url: '/FoodieGT/HelloServlet',
         dataType: "json",
-
-        success: function(data) {
-            console.log("Result" + data.Restaurantes);
         
-            console.log("aver")
+        success: function(data) {
+            
+            var conteo = data.conteo
+            var restaurantes = data.Restaurantes;
+
+            $.each(restaurantes, function(index, restaurante) {
+                var img3 = restaurante.img3.replace(/"/g, "");
+                var ubicacion = restaurante.ubicacion.replace(/"/g, "");
+                var precio = restaurante.precio.replace(/"/g, "");
+                var tipoServicio = restaurante.tipoServicio.replace(/"/g, "");
+                var horarios = restaurante.horarios.replace(/"/g, "");
+                var web = restaurante.web.replace(/"/g, "");
+                var ambiente = restaurante.ambiente.replace(/"/g, "");
+                var nombre = restaurante.nombre.replace(/"/g, "");
+                var tipoComida = restaurante.tipoComida.replace(/"/g, "");
+                var img2 = restaurante.img2.replace(/"/g, "");
+                var img1 = restaurante.img1.replace(/"/g, "");
+                createObjects(nombre,ubicacion,precio,tipoComida,ambiente,tipoServicio,horarios,web,img1,img2,img3)
+                
+            });
+            renderCards(productList);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Ocurrió un error al recibir la respuesta
-            console.log("Error: " + textStatus, errorThrown); // Mostrar información del error
-        }
+        
     } );
+    
+    
 }
-})(jQuery);
+
