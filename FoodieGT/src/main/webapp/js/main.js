@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    alert("HOLAssssss")
+    //alert("HOLAssssss")
     fillDataSelect();
     loadAllRestaurants();
 
@@ -121,7 +121,7 @@ function fillDataSelect(){
 
 //createObjects("Rincón del Steak","5ta ave. 10-30 zona 9",'117 GTQ - 311 GTQ','Comida de mar','Familiar','Domicilio','Lunes - Sábado: 12:00 pm - 22:00 pm' ,'https://rincondelsteak.com.gt/menus-2','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/4.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/17.jpg','https://rincondelsteak.com.gt/wp-content/uploads/2022/10/8.jpg');
 
-function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servicio,horario,web,img1,img2,img3){
+function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servicio,horario,web,img1){
     productList.push({
         nombre: nombre,
         ubicacion: ubicacion,
@@ -131,9 +131,7 @@ function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servici
         tipo_servicio: tipo_servicio,
         horario: horario,
         web: web,
-        img1: img1,
-        img2: img2,
-        img3: img3
+        img1: img1
     });
 }
 
@@ -211,7 +209,6 @@ function loadAllRestaurants(){
             var restaurantes = data.Restaurantes;
 
             $.each(restaurantes, function(index, restaurante) {
-                var img3 = restaurante.img3.replace(/"/g, "");
                 var ubicacion = restaurante.ubicacion.replace(/"/g, "");
                 var precio = restaurante.precio.replace(/"/g, "");
                 var tipoServicio = restaurante.tipoServicio.replace(/"/g, "");
@@ -220,9 +217,8 @@ function loadAllRestaurants(){
                 var ambiente = restaurante.ambiente.replace(/"/g, "");
                 var nombre = restaurante.nombre.replace(/"/g, "");
                 var tipoComida = restaurante.tipoComida.replace(/"/g, "");
-                var img2 = restaurante.img2.replace(/"/g, "");
                 var img1 = restaurante.img1.replace(/"/g, "");
-                createObjects(nombre,ubicacion,precio,tipoComida,ambiente,tipoServicio,horarios,web,img1,img2,img3)
+                createObjects(nombre,ubicacion,precio,tipoComida,ambiente,tipoServicio,horarios,web,img1)
                 
             });
             renderCards(productList);
@@ -234,25 +230,27 @@ function loadAllRestaurants(){
 }
 
 $("button").click(function() {
+    var nombre = $("#nombre").val() || "";
+    var img1 = $("#img1").val() || "";
     var ubicacion = $("#op_Ubicacion").val() || "";
     var precio = $("#op_Precio").val() || "";
     var tipoComida = $("#op_TipoComida").val() || "";
     var ambiente = $("#op_Ambiente").val() || "";
     var servicio = $("#op_Servicio").val() || "";
     var horario = $("#op_Horario").val() || "";
-    productList = [];
-    renderCards(productList);
-    console.log("Se debio eliminar estooooo");
+
     $.ajax({
         type: "GET",
-        url: '/FoodieGT/SearchRestaurants',
+        url: '/FoodieGT/SaveRestaurantServlet',
         data: {
-        ubicacion: ubicacion,
-        precio: precio,
-        tipoComida: tipoComida,
-        ambiente: ambiente,
-        servicio: servicio,
-        horario: horario
+            nombre : nombre,
+            img1 : img1,
+            ubicacion: ubicacion,
+            precio: precio,
+            tipoComida: tipoComida,
+            ambiente: ambiente,
+            servicio: servicio,
+            horario: horario
         },
         success: function(data) {
         
@@ -260,7 +258,6 @@ $("button").click(function() {
         var restaurantes = data.Restaurantes;
         
         $.each(restaurantes, function(index, restaurante) {
-            var img3 = restaurante.img3.replace(/"/g, "");
             var ubicacion = restaurante.ubicacion.replace(/"/g, "");
             var precio = restaurante.precio.replace(/"/g, "");
             var tipoServicio = restaurante.tipoServicio.replace(/"/g, "");
@@ -269,10 +266,9 @@ $("button").click(function() {
             var ambiente = restaurante.ambiente.replace(/"/g, "");
             var nombre = restaurante.nombre.replace(/"/g, "");
             var tipoComida = restaurante.tipoComida.replace(/"/g, "");
-            var img2 = restaurante.img2.replace(/"/g, "");
             var img1 = restaurante.img1.replace(/"/g, "");
             console.log("nombre: "+nombre);
-            createObjects(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horarios, web, img1, img2, img3);
+            createObjects(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horarios, web, img1);
         });
         renderCards(productList);
         },

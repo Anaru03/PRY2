@@ -157,4 +157,30 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
 	}
 	
+	public String insertRestaurant(String nombre,String img1,String ubicacion, String precio, String tipoComida, String ambiente, String servicio, String horario) {
+    	try ( Session session = driver.session() )
+        {
+   		 
+   		 String result = session.writeTransaction( new TransactionWork<String>()
+   		 
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    //tx.run( "CREATE (Test:Movie {title:'" + title + "', released:"+ releaseYear +", tagline:'"+ tagline +"'})");
+                	tx.run("CREATE (r:Restaurante {nombre: '"+nombre+"', ubicacion: '"+ubicacion+"', precio: '"+precio+"', tipo_comida: 'Comida internacional', ambiente: 'Familiar', tipo_servicio: 'A la mesa', horario: 'Lunes - Sábado: 12:00 pm - 22:00 pm',web:'https://rincondelsteak.com.gt/menus-2',img1:'https://rincondelsteak.com.gt/wp-content/uploads/2022/10/4.jpg',img2:'https://rincondelsteak.com.gt/wp-content/uploads/2022/10/17.jpg',img3:'https://rincondelsteak.com.gt/wp-content/uploads/2022/10/8.jpg'})");
+                    
+                    return "OK";
+                }
+            }
+   		 
+   		 );
+            
+            return result;
+        } catch (Exception e) {
+        	return e.getMessage();
+        }
+    }
+	
+	
 }
