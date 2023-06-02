@@ -68,7 +68,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 				@Override
                 public LinkedList<Restaurante> execute( Transaction tx )
                 {
-                    Result result = tx.run( "MATCH (restaurante:Restaurante) RETURN restaurante.nombre , restaurante.ubicacion, restaurante.precio, restaurante.tipo_comida, restaurante.ambiente, restaurante.tipo_servicio,restaurante.horario, restaurante.web, restaurante.img1, restaurante.img2, restaurante.img3");
+                    Result result = tx.run( "MATCH (restaurante:Restaurante) RETURN restaurante.nombre , restaurante.ubicacion, restaurante.precio, restaurante.tipo_comida, restaurante.ambiente, restaurante.tipo_servicio,restaurante.horario, restaurante.web, restaurante.img1");
                     LinkedList<Restaurante> myrestaurants = new LinkedList<Restaurante>();
                     List<Record> registros = result.list();
                     
@@ -91,11 +91,10 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     	      
                     	String web = registros.get(i).get("restaurante.web").toString();
                     	String img1 = registros.get(i).get("restaurante.img1").toString();
-                    	String img2 = registros.get(i).get("restaurante.img2").toString();
-                    	String img3 = registros.get(i).get("restaurante.img3").toString();
+
                     	
                     	
-                    	Restaurante rs = new Restaurante(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horario, web, img1, img2, img3);
+                    	Restaurante rs = new Restaurante(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horario, web, img1);
                    	 	myrestaurants.add(rs);
                     }
                     
@@ -144,7 +143,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     	String img1 = registros.get(i).get("restaurante.img1").toString();
                     	String img2 = registros.get(i).get("restaurante.img2").toString();
                     	String img3 = registros.get(i).get("restaurante.img3").toString();
-                    	Restaurante rs = new Restaurante(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horario, web, img1, img2, img3);
+                    	Restaurante rs = new Restaurante(nombre, ubicacion, precio, tipoComida, ambiente, tipoServicio, horario, web, img1);
                     	
                     	myrestaurants.add(rs);
                     }

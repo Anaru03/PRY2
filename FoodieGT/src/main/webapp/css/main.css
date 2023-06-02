@@ -183,3 +183,15 @@ header{
     --bs-btn-disabled-bg: var(--tawny);
     --bs-btn-disabled-border-color: var(--tawny);
 }
+@media (max-width: 600px) {
+    /* Estilos para pantallas más pequeñas */
+    .btn-outline-primary{
+        width: 70%;
+    }
+    .navbar-brand{
+        width: 100%;
+    }
+    .nav-pills{
+        justify-self: center;
+    }
+}

@@ -12,10 +12,8 @@ public class Restaurante {
     private String horarios;
     private String web;
     private String img1;
-    private String img2;
-    private String img3;
 
-    public Restaurante(String nombre, String ubicacion, String precio, String tipoComida, String ambiente, String tipoServicio, String horarios, String web, String img1, String img2, String img3) {
+    public Restaurante(String nombre, String ubicacion, String precio, String tipoComida, String ambiente, String tipoServicio, String horarios, String web, String img1) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.precio = precio;
@@ -25,8 +23,6 @@ public class Restaurante {
         this.horarios = horarios;
         this.web = web;
         this.img1 = img1;
-        this.img2 = img2;
-        this.img3 = img3;
     }
 
     public String getNombre() {
@@ -101,24 +97,10 @@ public class Restaurante {
         this.img1 = img1;
     }
 
-    public String getImg2() {
-        return img2;
-    }
-
-    public void setImg2(String img2) {
-        this.img2 = img2;
-    }
-
-    public String getImg3() {
-        return img3;
-    }
-
-    public void setImg3(String img3) {
-        this.img3 = img3;
-    }
+  
     
     public String toString() {
-		return nombre + ";" + ubicacion + ";" + precio + ";" + tipoComida + ";" + ambiente + ";" + tipoServicio + ";" + horarios + ";" + web + ";" + img1 + ";" + img2 + ";" + img3;
+		return nombre + ";" + ubicacion + ";" + precio + ";" + tipoComida + ";" + ambiente + ";" + tipoServicio + ";" + horarios + ";" + web + ";" + img1;
     	
     }
 }

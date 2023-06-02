@@ -2,8 +2,20 @@ $(document).ready(function(){
     
     fillDataSelect();
 
-
+    verificarAnchoPantalla();
     
+});
+
+function verificarAnchoPantalla() {
+    if ($(window).width() < 600) {
+        $('#btns').addClass('justify-content-center');
+    } else {
+        $('#btns').removeClass('justify-content-center');
+    }
+}
+
+$(window).resize(function() {
+    verificarAnchoPantalla();
 });
 
 function fillDataSelect(){

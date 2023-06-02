@@ -4,12 +4,24 @@ $(document).ready(function(){
     fillDataSelect();
     loadAllRestaurants();
 
+    verificarAnchoPantalla();
 
     
 });
 
 var productList = [];
 
+function verificarAnchoPantalla() {
+    if ($(window).width() < 600) {
+        $('#btns').addClass('justify-content-center');
+    } else {
+        $('#btns').removeClass('justify-content-center');
+    }
+}
+
+$(window).resize(function() {
+    verificarAnchoPantalla();
+});
 
 function fillDataSelect(){
     var ubicaciones = [
@@ -238,10 +250,11 @@ $("button").click(function() {
     var ambiente = $("#op_Ambiente").val() || "";
     var servicio = $("#op_Servicio").val() || "";
     var horario = $("#op_Horario").val() || "";
-
+	productList = [];
+	$(".card-container").empty();
     $.ajax({
         type: "GET",
-        url: '/FoodieGT/SaveRestaurantServlet',
+        url: '/FoodieGT/SearchRestaurants',
         data: {
             nombre : nombre,
             img1 : img1,

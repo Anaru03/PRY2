@@ -65,8 +65,7 @@ public class HelloServlet extends HttpServlet {
 				 		caracteristicasRestaurantes.put("horarios", myrestaurants.get(i).getHorarios());
 				 		caracteristicasRestaurantes.put("web", myrestaurants.get(i).getWeb());
 				 		caracteristicasRestaurantes.put("img1", myrestaurants.get(i).getImg1());
-				 		caracteristicasRestaurantes.put("img2", myrestaurants.get(i).getImg2());
-				 		caracteristicasRestaurantes.put("img3", myrestaurants.get(i).getImg3());
+
 
 
 				 		arrrest.add(caracteristicasRestaurantes);
