@@ -50,7 +50,7 @@ public class SaveRestaurantServlet extends HttpServlet {
 	 	String servicio = request.getParameter("servicio");
 	 	String horario = request.getParameter("horario");
 	 	
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.215.127.186:7687", "neo4j", "elapse-career-realignments" ) )
+	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://52.91.190.166:7687", "neo4j", "kilometer-raise-capabilities" ) )
 	        {
 			 	String myResultTx = neo4jDriver.insertRestaurant(nombre, img1, ubicacion, precio, tipoComida, ambiente, servicio, horario);
 	        	
@@ -65,7 +65,7 @@ public class SaveRestaurantServlet extends HttpServlet {
 	 	out.println(myResponse);
 	 	out.flush();
 	}
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

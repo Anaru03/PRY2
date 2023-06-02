@@ -55,7 +55,7 @@ public class SearchRestaurants extends HttpServlet {
 	 	String servicio = request.getParameter("servicio");
 	 	String horario = request.getParameter("horario");
 	 	
-	 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://52.205.254.112:7687", "neo4j", "investigations-signals-wages" ) )
+	 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://52.91.190.166:7687", "neo4j", "kilometer-raise-capabilities" ) )
 	        {
 			 	LinkedList<Restaurante> myrestaurants = greeter.getSearch(ubicacion,precio,tipoComida,ambiente,servicio,horario);
 	 		//LinkedList<Restaurante> myrestaurants = greeter.getSearch("10","Gama alta","Comida internacional","Negocios","Domicilio","Almuerzo");

@@ -1,6 +1,5 @@
 $(document).ready(function(){
     
-    //alert("HOLAssssss")
     fillDataSelect();
 
 
@@ -123,34 +122,35 @@ function createObjects(nombre,ubicacion,precio,tipo_comida,ambiente,tipo_servici
         ambiente: ambiente,
         tipo_servicio: tipo_servicio,
         horario: horario,
-        web: web
+        web: web,
+        img1 : img1
     });
 }
 
 $("button").click(function() {
+    var nombre = $("#nombre").val() || "";
+    var img1 = $("#img1").val() || "";
     var ubicacion = $("#op_Ubicacion").val() || "";
     var precio = $("#op_Precio").val() || "";
     var tipoComida = $("#op_TipoComida").val() || "";
     var ambiente = $("#op_Ambiente").val() || "";
     var servicio = $("#op_Servicio").val() || "";
     var horario = $("#op_Horario").val() || "";
-    productList = [];
-    renderCards(productList);
-    console.log("Se debio eliminar estooooo");
     $.ajax({
         type: "GET",
-        url: '/FoodieGT/SearchRestaurants',
+        url: '/FoodieGT/SaveRestaurantServlet',
         data: {
         ubicacion: ubicacion,
         precio: precio,
         tipoComida: tipoComida,
         ambiente: ambiente,
         servicio: servicio,
-        horario: horario
+        horario: horario,
+        nombre: nombre,
+        img1: img1
         },
         success: function(data) {
-            console.log("AAAAAA");
-            console.log(data.resultado);
+            alert("Resultado: " + data.resultado);
         },
         error: function(xhr, status, error) {
         console.log("ERROR:", error);

@@ -49,7 +49,7 @@ public class HelloServlet extends HttpServlet {
 		 	ArrayList<Restaurante> arrRest = new ArrayList();
 		 	
 		 	
-		 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://52.205.254.112:7687", "neo4j", "investigations-signals-wages" ) )
+		 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://52.91.190.166:7687", "neo4j", "kilometer-raise-capabilities" ) )
 		        {
 				 	LinkedList<Restaurante> myrestaurants = greeter.getRestaurants();
 				 	
